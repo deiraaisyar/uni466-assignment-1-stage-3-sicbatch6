@@ -1,4 +1,4 @@
-# Samsung Innovation Campus Batch 6 Stage 3 Assignmnent
+# Samsung Innovation Campus Batch 6 Stage 3 Assignment
 ![Header](/HelmAware_Header.jpg)
 ## General Information
 Group Name: Warga Naget
@@ -88,7 +88,9 @@ The system collects temperature, humidity, and motion data from an ESP32 board a
 
 
 
+
 Ubidots Link: https://stem.ubidots.com/app/dashboards/public/dashboard/KgbDk-BLMrFIxYlufbDPBy5SNaQIkMPOrjdkDeK8qlM?navbar=true&contextbar=true&datePicker=true&devicePicker=true&displayTitle=true
+
 
 
 Video Demonstration Link: 
