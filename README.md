@@ -1,5 +1,5 @@
 # HelmAware
-![Header](images/photo.jpg)
+![Header](/HelmAware_Header.jpg)
 ## General Information
 Group Name: Warga Naget
 
