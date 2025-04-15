@@ -7,6 +7,10 @@ from datetime import datetime
 from paho.mqtt import publish
 from ultralytics import YOLO
 import time
+from PIL import Image
+
+img = Image.open('helmaware_header.jpg')
+st.image(img)
 
 # === CONFIG ===
 CAMERA_SNAPSHOT_URL = "http://192.168.0.115:81/stream"
