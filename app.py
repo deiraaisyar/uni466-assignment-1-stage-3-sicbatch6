@@ -76,11 +76,11 @@ else:
     humidity_chart_placeholder.line_chart(df['humidity'])
 
 # ========== KONFIGURASI UBIDOTS DAN ESP32-CAM ==========
-UBIDOTS_TOKEN = "YOUR_UBIDOTS_TOKEN"
+CAMERA_SNAPSHOT_URL = "http://192.168.0.110:81/stream"
+UBIDOTS_TOKEN = "BBUS-iYTamlBTLRQ8di2mUMohiW4ErEmBGf"
 UBIDOTS_BROKER = "industrial.api.ubidots.com"
-DEVICE_LABEL = "esp32-cam"
+DEVICE_LABEL = "hazard-node"
 VARIABLE_LABEL = "alert"
-CAMERA_SNAPSHOT_URL = "http://YOUR_ESP32_CAM_URL/capture"
 
 # Inisialisasi session state
 if "detecting" not in st.session_state:
@@ -172,24 +172,19 @@ def detect_motion(frame, last_frame, min_area=500):
 
     return gray, motion_detected
 
-# Start/Stop Detection Buttons
-col1, col2 = st.columns(2)
-with col1:
-    if not st.session_state.detecting and st.button("▶ Start Detection"):
-        st.session_state.detecting = True
-with col2:
-    if st.session_state.detecting and st.button("⏹ Stop Detection"):
-        st.session_state.detecting = False
-        publish_to_ubidots(0)
-        st.success("Detection stopped.")
+st.markdown("### 📷 Live Camera Feed")
 
-# Detection loop
+# Placeholder for displaying the camera feed
+frame_holder = st.empty()
+
+# Continuous camera feed display
 last_frame = None
-if st.session_state.detecting:
-    frame = get_snapshot()
+while True:
+    frame = get_snapshot()  # Fetch a frame from the camera
     if frame is not None:
+        # Perform motion detection
         last_frame, motion_detected = detect_motion(frame, last_frame)
-        
+
         if motion_detected != st.session_state.motion_detected:
             st.session_state.motion_detected = motion_detected
             if motion_detected:
@@ -199,7 +194,7 @@ if st.session_state.detecting:
                 st.session_state.logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ Motion Cleared")
                 st.toast("✅ Motion Cleared")
 
-        # Continue with YOLO detection if needed
+        # YOLO detection
         results = model(frame)[0]
         annotated = results.plot()
         hazard_detected = False
@@ -219,10 +214,14 @@ if st.session_state.detecting:
         if not hazard_detected:
             reset_alert_if_needed()
 
+        # Display the annotated frame
         frame_holder.image(cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB), channels="RGB")
 
+    # Display the detection logs
     if st.session_state.logs:
         log_holder.markdown("### 📝 Detection Log\n" + "\n".join(st.session_state.logs[-10:]))
+
+    time.sleep(0.1)  # Adjust the delay to control the frame rate
 
 import streamlit as st
 import folium

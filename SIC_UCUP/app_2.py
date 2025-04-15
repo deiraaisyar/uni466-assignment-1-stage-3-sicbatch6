@@ -11,10 +11,10 @@ from io import BytesIO
 import time
 
 # === CONFIG ===
-CAMERA_SNAPSHOT_URL = "http://172.20.10.2:81/stream"
-UBIDOTS_TOKEN = "BBUS-iYTamlBTLRQ8di2mUMohiW4ErEmBGf"
+CAMERA_SNAPSHOT_URL = "http://192.168.0.115:81/stream"
+UBIDOTS_TOKEN = "BBUS-8rMLXoEFppMoI2rt7r9zFIOEu53CTe"
 UBIDOTS_BROKER = "industrial.api.ubidots.com"
-DEVICE_LABEL = "hazard-node"
+DEVICE_LABEL = "esp32-sic6-stage3"
 VARIABLE_LABEL = "alert"
 
 # === GLOBAL STATES ===
@@ -159,4 +159,3 @@ if st.session_state.detecting:
                 break
 
         cap.release()
-
