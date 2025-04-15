@@ -86,6 +86,8 @@ The system collects temperature, humidity, and motion data from an ESP32 board a
 
   Responses are contextualized using the latest sensor readings.
 
+
+
 Ubidots Link: https://stem.ubidots.com/app/dashboards/public/dashboard/KgbDk-BLMrFIxYlufbDPBy5SNaQIkMPOrjdkDeK8qlM?navbar=true&contextbar=true&datePicker=true&devicePicker=true&displayTitle=true
 
 
