@@ -8,7 +8,7 @@ from ultralytics import YOLO
 import time
 from PIL import Image
 
-img = Image.open('helmaware_header.jpg')
+img = Image.open('HelmAware_Header.jpg')
 st.image(img)
 
 # === CONFIG ===
