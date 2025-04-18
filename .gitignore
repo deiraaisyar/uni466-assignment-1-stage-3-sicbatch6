@@ -1,0 +1,31 @@
+# Environment
+my_env/
+.env/
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Mac / Linux / Windows
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Virtualenv / pipenv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+dist/
+build/
+*.spec

@@ -1,0 +1,8 @@
+streamlit
+pandas
+requests
+opencv-python
+paho-mqtt
+ultralytics
+Pillow
+google-generativeai
